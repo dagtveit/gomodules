@@ -2,10 +2,10 @@ package tailtracer
 
 import (
 	"context"
-	"go.opentelemetry.io/collector/consumer"
 	"time"
 
 	"go.opentelemetry.io/collector/component"
+	"go.opentelemetry.io/collector/consumer"
 	"go.opentelemetry.io/collector/receiver"
 )
 
@@ -24,7 +24,6 @@ func createTracesReceiver(_ context.Context, params receiver.CreateSettings, bas
 	return nil, nil
 }
 
-// NewFactory creates a factory for tailtracer receiver.
 // NewFactory creates a factory for tailtracer receiver.
 func NewFactory() receiver.Factory {
 	return receiver.NewFactory(
