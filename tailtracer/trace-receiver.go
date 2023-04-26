@@ -25,11 +25,11 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 	go func() {
 		ticker := time.NewTicker(interval)
 		defer ticker.Stop()
-
 		for {
 			select {
 			case <-ticker.C:
 				tailtracerRcvr.logger.Info("I should start processing traces now!")
+				tailtracerRcvr.nextConsumer.ConsumeTraces(ctx, generateTraces(tailtracerRcvr.config.NumberOfTraces))
 			case <-ctx.Done():
 				return
 			}
